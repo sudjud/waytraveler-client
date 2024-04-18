@@ -3,9 +3,6 @@ import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import { fetchTrips } from "../../../features/tripSlice";
 import card from "./card.module.sass";
-import { BsHeartFill } from "react-icons/bs";
-import { BsShare } from "react-icons/bs";
-import Likes from "../../Tools/Likes";
 import TripLike from "../../Tools/TripLikes";
 
 const TripCard = (props) => {
@@ -19,7 +16,7 @@ const TripCard = (props) => {
       <div className={card.trip}>
         {trip.map((item) => {
           return (
-            <div className={card.m}>
+            <div className={card.m} key={item._id}>
               <div className={card.title}>
                 <div className={card.img}>
                   <img

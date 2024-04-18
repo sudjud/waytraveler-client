@@ -11,7 +11,7 @@ function SCard(props) {
     return (
       <div className={card.s}>
         <div className={card.s__image}>
-          <img src={`https://waytravel-server-7bcc93134540.herokuapp.com/${cardItem.photos[0].name}`} alt="" />
+          <img src={`https://waytravel-server-7bcc93134540.herokuapp.com/uploads/images/${cardItem.photos[0].name}`} alt="" />
         </div>
         <div className={card.s__name}>
           {cardItem.name}

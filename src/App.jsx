@@ -1,24 +1,19 @@
 import "./style.sass";
 import Header from "./components/Header";
 import { Routes, Route, Navigate } from "react-router-dom";
-// import Footer from "./components/Footer";
-import SignUp from "./pages/Auth/SignUp";
-import SignIn from "./pages/Auth/SignIn";
+import SignUp from "./pages/Auth/signUp";
+import SignIn from "./pages/Auth/signIn";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import { fetchAreas } from "./features/areaSlice";
 import YandexMap from "./components/YandexMap/index";
 import { fetchPlaces } from "./features/placeSlice";
 import MainPage from "./pages/MainPage";
-import SCard from "./components/Cards/PlaceCards/SCard";
-import Footer from "./components/Footer";
 import PlacePage from "./pages/PlacePage";
 import CategoriesBlock from "./components/Blocks/CategoriesBlock";
 
 
 function App() {
-  const places = useSelector((state) => state.place.places);
-
   const token = useSelector((state) => state.user.token);
 
   const dispatch = useDispatch();

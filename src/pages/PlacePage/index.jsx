@@ -6,7 +6,7 @@ import { IoHomeOutline } from "react-icons/io5";
 import SCard from "../../components/Cards/PlaceCards/SCard";
 import SimpleImageSlider from "react-simple-image-slider";
 import towerImg from "../../assets/img/towers/tower.png";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { fetchPlaces } from "../../features/placeSlice";
 import Likes from "../../components/Tools/Likes";
 import Comments from "../../components/Tools/Comments";
@@ -17,7 +17,6 @@ function PlacePage() {
   const dispatch = useDispatch();
   const places = useSelector((state) => state.place.places);
   const place = places.find((item) => item._id === id);
-  const loader = useSelector((state) => state.place.loader);
 
   useEffect(() => {
     dispatch(fetchPlaces());
@@ -38,7 +37,7 @@ function PlacePage() {
   if (place) {
     images = place.photos.map((item) => {
       return {
-        url: `https://waytravel-server-7bcc93134540.herokuapp.com/${item.name}`,
+        url: `https://waytravel-server-7bcc93134540.herokuapp.com/uploads/images/${item.name}`,
       };
     });
   }
@@ -53,7 +52,7 @@ function PlacePage() {
       <div className={placeStyle.place}>
         <div
           style={{
-            background: `url(https://waytravel-server-7bcc93134540.herokuapp.com/${
+            background: `url(https://waytravel-server-7bcc93134540.herokuapp.com/uploads/images/${
               place.photos[getRandomInt(place.photos.length)].name
             }) no-repeat center center`,
           }}

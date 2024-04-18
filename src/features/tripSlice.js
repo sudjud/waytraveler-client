@@ -11,14 +11,14 @@ export const fetchTrips = createAsyncThunk('trip/fetchTrips', async (_, thunkAPI
   }
 });
 
-export const likeTrip = createAsyncThunk('like/trip', async(data, thunkAPI) => {
+export const likeTrip = createAsyncThunk('like/trip', async(dataIn, thunkAPI) => {
   try {
-    const res = await fetch(`https://waytravel-server-7bcc93134540.herokuapp.com/trip/${data}/add-like`, {
+    const res = await fetch(`https://waytravel-server-7bcc93134540.herokuapp.com/trip/${dataIn}/add-like`, {
       method: 'PATCH',
       headers: {
         Authorization: `Bearer ${thunkAPI.getState().user.token}`
       }
-    })
+    });
     const data = await res.json();
     return thunkAPI.fulfillWithValue(data);
   } catch (e) {

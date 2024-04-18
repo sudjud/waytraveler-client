@@ -21,9 +21,8 @@ function MCardSlider() {
       >
         {places.map((item) => {
           return (
-            <SwiperSlide>
+            <SwiperSlide key={item._id}>
               <MCard
-                key={item._id}
                 id={item._id}
                 name={item.name}
                 desc={item.description}

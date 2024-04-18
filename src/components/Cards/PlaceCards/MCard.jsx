@@ -2,19 +2,17 @@ import card from "./card.module.sass";
 import { motion } from "framer-motion";
 import { BsShare } from "react-icons/bs";
 import SimpleImageSlider from "react-simple-image-slider";
-import { FaComment } from "react-icons/fa";
-import { FcLike } from "react-icons/fc";
 import Likes from "../../Tools/Likes";
 import { useNavigate } from "react-router-dom";
 import Comments from "../../Tools/Comments";
 
 function MCard(props) {
   const navigate = useNavigate();
-  const { id, name, area, desc, author, likes, comments, photos } = props;
+  const { id, name, area, desc, author, photos } = props;
 
   let images = photos.map((item) => {
     return {
-      url: `https://waytravel-server-7bcc93134540.herokuapp.com/${item.name}`,
+      url: `https://waytravel-server-7bcc93134540.herokuapp.com/uploads/images/${item.name}`,
     };
   });
 

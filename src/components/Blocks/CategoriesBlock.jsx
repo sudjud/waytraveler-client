@@ -15,15 +15,14 @@ function CategoriesBlock () {
       <div className={block.categories}>
           {categories.map((item) => {
             return (
-              <div className={block.cart}>
+              <div className={block.cart} key={item._id}>
                 <span
                   className={block.name}
-                  key={item._id}
                   onClick={() => navigate(`/category/${item._id}`)}
                 >
                   {item.name}
                 </span>
-                  <img className={block.image} src={item.photo}></img>
+                  <img className={block.image} src={item.photo} alt="imag"></img>
               </div>
             );
           })}

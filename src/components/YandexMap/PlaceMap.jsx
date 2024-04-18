@@ -32,7 +32,7 @@ const PlaceMap = (props) => {
               balloonContent: `
           <div class=${card.s}>
           <div class=${card.s__image}>
-            <img  src='https://waytravel-server-7bcc93134540.herokuapp.com/${place.photos[0].name}' alt="" width="400"/>
+            <img  src='https://waytravel-server-7bcc93134540.herokuapp.com/uploads/images/${place.photos[0].name}' alt="" width="400"/>
           </div>
           <div class=${card.s__name}>
             ${place.name}

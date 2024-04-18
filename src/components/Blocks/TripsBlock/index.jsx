@@ -1,4 +1,3 @@
-import TripCard from '../../Cards/TripCards/MTrip';
 import block from '../block.module.sass'
 
 function TripsBlock() {

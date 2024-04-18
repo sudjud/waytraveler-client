@@ -23,7 +23,7 @@ const MapBalloon = ({ name, point, areas, photos, id }) => {
           balloonContent: `
           <div class=${card.s}>
           <div class=${card.s__image}>
-            <img src='https://waytravel-server-7bcc93134540.herokuapp.com/${photos[0].name}' alt="" />
+            <img src='https://waytravel-server-7bcc93134540.herokuapp.com/uploads/images/${photos[0].name}' alt="" />
           </div>
           <div class=${card.s__name}>
             ${name}
