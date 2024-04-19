@@ -22,6 +22,10 @@ function PlacePage() {
     dispatch(fetchPlaces());
   }, [dispatch]);
 
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   const nearPlaces = places.filter((item) => {
     let [latitude, longitude] = place.point.split(", ");
     let [latitudeI, longitudeI] = item.point.split(", ");

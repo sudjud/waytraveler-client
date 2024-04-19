@@ -51,7 +51,6 @@ function App() {
         <Route path="/auth" element={<Navigate to="/" />}></Route>
         <Route path="/place/:id" element={<PlacePage />} />
       </Routes>
-      <CategoriesBlock />
     </div>
   );
 }
