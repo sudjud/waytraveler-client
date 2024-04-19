@@ -8,7 +8,7 @@ const MapBalloon = ({ name, point, areas, photos, id }) => {
 
 
   function myFunction(id) {
-    return `http://localhost:3000/place/${id}`;
+    return `http://waynakh-travel.ru/place/${id}`;
   }
 
   const login = myFunction(id);
