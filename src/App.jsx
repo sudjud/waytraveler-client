@@ -15,7 +15,6 @@ import CategoriesBlock from "./components/Blocks/CategoriesBlock";
 
 function App() {
   const token = useSelector((state) => state.user.token);
-
   const dispatch = useDispatch();
 
   useEffect(() => {

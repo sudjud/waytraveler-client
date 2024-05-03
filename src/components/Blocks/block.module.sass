@@ -14,6 +14,37 @@
     width: 200px
     opacity: 0.3
 
+@media (max-width: 1024px)
+  .places
+    padding: 0 0 100px 65px
+    &__title
+      padding-right: 65px
+    &__desc
+      padding-right: 65px
+
+@media (max-width: 768px)
+  .places
+    &__title
+      padding-right: 65px
+    &__desc
+      padding-right: 65px
+
+@media (max-width: 640px)
+  .places
+    padding: 0 0 100px 25px
+    &__title
+      padding-right: 0px
+    &__desc
+      padding-right: 0px
+
+@media (max-width: 390px)
+  .places
+    padding: 0 0 100px 5px
+    &__title
+      padding-right: 0px
+    &__desc
+      padding-right: 0px
+
 .categories
   width: 100%
   display: flex
@@ -60,8 +91,6 @@
   margin: 10px
   border-radius: 10px
   input
-    // border-radius: 5px 0 0 5px
-    // border-radius: none
     border-right: none #767676
     border: 0.5px solid 
     outline: none
@@ -80,7 +109,6 @@
     cursor: pointer
     justify-content: center
     align-items: center
-    // border-radius: 0 5px 5px 0
     color: white
     height: 2.5rem
     &:active
@@ -117,7 +145,7 @@
     top: 0
     left: 0
     object-fit: cover
-    width: 100%
+    width: 100vw
     height: 100vh
   
 .black
@@ -134,7 +162,8 @@
   position: relative
   &__title
     font-size: 8rem
-    width: 1700px
+    height: 30%
+    width: 100%
     font-weight: 600
     opacity: 1
     left: 0
@@ -149,13 +178,43 @@
     text-align: center
     font-family: Verdana, Geneva, Tahoma, sans-serif
   &__image
-    bottom: 180px
-    width: 1100px
+    width: 57%
     left: 0
     right: 0
     margin: 0 auto
     position: absolute
     z-index: 50
+
+@media (max-width: 1500px)
+  .fadeIn
+    &__title
+      font-size: 6rem
+
+@media (max-width: 1024px)
+  .fadeIn
+    &__title
+      font-size: 4rem
+
+@media (max-width: 768px)
+  .fadeIn
+    &__title
+      font-size: 3.5rem
+    &__image
+      width: 75%
+
+@media (max-width: 670px)
+  .fadeIn
+    &__title
+      font-size: 2.5rem
+    &__image
+      width: 55%
+
+@media (max-width: 520px)
+  .fadeIn
+    &__title
+      font-size: 2rem
+    &__image
+      width: 75%
 
 .tripsBlock
   background: linear-gradient(180deg, rgba(80,133,165,1) 0%, rgba(0,0,0,0) 100%)
