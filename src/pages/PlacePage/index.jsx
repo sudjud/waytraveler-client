@@ -70,9 +70,6 @@ function PlacePage() {
                     <span
                       className="underline"
                       key={item._id}
-                      onClick={() => {
-                        navigate(`/category/${item._id}`);
-                      }}
                     >
                       {item.name}
                     </span>
@@ -81,9 +78,6 @@ function PlacePage() {
                       <span
                         key={item._id}
                         className="underline"
-                        onClick={() => {
-                          navigate("/category/" + item._id);
-                        }}
                       >
                         {item.name}
                       </span>
@@ -108,51 +102,26 @@ function PlacePage() {
                 onClick={() => navigate("/")}
               />
               <span className={placeStyle.place__area_separator}>{">"}</span>
-              <span
-                onClick={() => {
-                  navigate(`/area/${place.areas._id}`);
-                }}
-              >
+              <span>
                 {place.areas.name}
               </span>
               <span className={placeStyle.place__area_separator}>{">"}</span>
               {place.name}
             </div>
             <div className={placeStyle.place__reactions}>
-              <div className={placeStyle.place__reactions_like}><Likes id={id}/></div>
-              <div className={placeStyle.place__reactions_comment}><Comments id={id}/></div>
+              <div className={placeStyle.place__reactions_like}>
+                <Likes id={id} />
+              </div>
+              <div className={placeStyle.place__reactions_comment}>
+                <Comments id={id} />
+              </div>
             </div>
           </div>
         </div>
 
         <div className={placeStyle.place__info}>
-          <div>
-            <div className={placeStyle.place__desc}>{place.description}</div>
-            <div className={placeStyle.place__photos}>
-              <SimpleImageSlider
-                width={1080}
-                height={640}
-                navSize={30}
-                navStyle={2}
-                images={images}
-                showBullets={true}
-                bgColor={"transparent"}
-                showNavs={true}
-              />
-            </div>
-            {!!nearPlaces.length && (
-              <div className={placeStyle.place__near}>
-                <div className={placeStyle.place__subtitle}>Это рядом!</div>
-                <div className={placeStyle.place__near_items}>
-                  {nearPlaces.map((item) => {
-                    return <SCard key={item._id} id={item._id} />;
-                  })}
-                </div>
-              </div>
-            )}
-          </div>
           <div className={placeStyle.place__map}>
-            <PlaceMap zoom={8} id={place._id} w="250px" h="350px" />
+            <PlaceMap zoom={8} id={place._id} w="100%" h="350px" />
             <div className={placeStyle.place__map_info}>
               Район:
               <div className={placeStyle.place__map_area}>
@@ -170,6 +139,32 @@ function PlacePage() {
               alt="tower"
             />
           </div>
+          <div>
+            <div className={placeStyle.place__desc}>{place.description}</div>
+            <div className={placeStyle.place__photos}>
+              <SimpleImageSlider
+                className="slider-custom-stiles"
+                width={window.innerWidth > 768 ? "70vw" : "92vw"}
+                height={640}
+                navSize={30}
+                navStyle={2}
+                images={images}
+                showBullets={true}
+                bgColor={"transparent"}
+                showNavs={true}
+              />
+            </div>
+          </div>
+          {!!nearPlaces.length && (
+            <div className={placeStyle.place__near}>
+              <div className={placeStyle.place__subtitle}>Это рядом!</div>
+              <div className={placeStyle.place__near_items}>
+                {nearPlaces.map((item) => {
+                  return <SCard key={item._id} id={item._id} />;
+                })}
+              </div>
+            </div>
+          )}
         </div>
       </div>
     );
