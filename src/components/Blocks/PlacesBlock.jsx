@@ -10,7 +10,7 @@ function PlacesBlock() {
       Стоит посетить
       </h1>
       <h6 className={block.places__desc}>
-      Вашему вниманию места в наших краях, куда точно стоит поехать
+        Нажимайте на <span className={block.places__desc_mob}>карточку</span><span className={block.places__desc_desctop}>кнопку "Подробнее"</span>, чтобы узнать побольше о локации и посмотреть больше фото.
       </h6>
       <img src={mountain} />
       <MCardSlider />

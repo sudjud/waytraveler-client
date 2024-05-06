@@ -12,7 +12,7 @@ function Welcome() {
     <>
     <div className={block.welcome}>
       {/* <div style={{backgroundColor: `rgba(0, 0, 0, ${scrollValue / 1000})`}} className={block.black}></div> */}
-      <video autoPlay loop muted>
+      <video autoPlay loop muted playsInline>
         <source src={welcomeVideo} type="video/mp4" />
       </video>
     </div>
