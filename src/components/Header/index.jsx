@@ -1,10 +1,8 @@
 import header from "./header.module.sass";
 import { NavLink, useNavigate } from "react-router-dom";
 import { TbMap2 } from "react-icons/tb";
-import { FaSearchLocation } from "react-icons/fa";
-import Sidebar from "./Sidebar";
 import logo from './logo.png'
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { RiLoginBoxLine, RiLogoutBoxLine } from "react-icons/ri";
 import { deleteToken } from "../../features/userSlice";
@@ -14,21 +12,30 @@ function Header() {
   const navigate = useNavigate();
   const token = useSelector(state => state.user.token);
 
-  const [ scrollSetting, setScrollSetting ] = useState({
-    prevScrollPos: window.screenY,
+  const [scrollSetting, setScrollSetting] = useState({
+    prevScrollPos: window.pageYOffset, // Используйте pageYOffset для получения начальной позиции
     visible: true
-  })
-  
-  const handleScroll = () => {
-    const {prevScrollPos} = scrollSetting;
-    const currentScrollPos = window.scrollY;
-    const isVisible = currentScrollPos < prevScrollPos;
-    setScrollSetting({
-      prevScrollPos: currentScrollPos,
-      visible: isVisible
-    })
-  }
-  window.addEventListener("scroll", handleScroll);
+  });
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const currentScrollPos = window.pageYOffset;
+      const isVisible = currentScrollPos < scrollSetting.prevScrollPos || currentScrollPos === 0;
+
+      setScrollSetting({
+        prevScrollPos: currentScrollPos,
+        visible: isVisible
+      });
+    };
+
+    // Добавьте обработчик прокрутки
+    window.addEventListener("scroll", handleScroll);
+
+    // Удалите обработчик при размонтировании компонента
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, [scrollSetting.prevScrollPos]);
 
   const logout = () => {
     dispatch(deleteToken());
@@ -41,7 +48,7 @@ function Header() {
   return (
     <div className={scrollSetting.visible ? header.header : header.header_hidden}>
       <div className={header.sidebar}>
-        {/* <Sidebar  /> */}
+        {/* <Sidebar /> */}
       </div>
       <div className={header.left}>
         <NavLink to="/map" style={{ textDecoration: "none" }}>
@@ -50,23 +57,13 @@ function Header() {
             {/* <div>Карта</div> */}
           </div>
         </NavLink>
-        {/* <div className={header.search}>
-          <FaSearchLocation className={header.__search} />
-          <div
-            style={{ listStyle: "none", fontSize: "20px", marginLeft: "12px" }}
-          >
-            Поиск
-          </div>
-        </div> */}
         <div className={header.img}>
           <NavLink to="/">
             <img className={header.logo} src={logo} alt="" />
           </NavLink>
         </div>
         <div className={header.login}>
-          {
-            token ? <RiLogoutBoxLine onClick={logout} /> : <RiLoginBoxLine onClick={login} />
-          }
+          {token ? <RiLogoutBoxLine onClick={logout} /> : <RiLoginBoxLine onClick={login} />}
         </div>
       </div>
     </div>

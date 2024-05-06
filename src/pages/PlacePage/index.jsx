@@ -10,6 +10,12 @@ import { useEffect } from "react";
 import { fetchPlaces } from "../../features/placeSlice";
 import Likes from "../../components/Tools/Likes";
 import Comments from "../../components/Tools/Comments";
+import { Swiper, SwiperSlide } from 'swiper/react';
+import 'swiper/css'; // импортируйте базовые стили Swiper
+import 'swiper/css/navigation'; // стили для навигации
+import 'swiper/css/pagination'; // стили для пагинации
+import { Navigation, Pagination } from 'swiper';
+import PlacePageSlider from "./placePageSlider";
 
 function PlacePage() {
   const { id } = useParams();
@@ -67,18 +73,12 @@ function PlacePage() {
               <div className={placeStyle.place__categories}>
                 {place.categories.map((item, idx, arr) =>
                   idx === arr.length - 1 ? (
-                    <span
-                      className="underline"
-                      key={item._id}
-                    >
+                    <span className="underline" key={item._id}>
                       {item.name}
                     </span>
                   ) : (
                     <div>
-                      <span
-                        key={item._id}
-                        className="underline"
-                      >
+                      <span key={item._id} className="underline">
                         {item.name}
                       </span>
                       <div className={placeStyle.place__categories_andChar}>
@@ -102,9 +102,7 @@ function PlacePage() {
                 onClick={() => navigate("/")}
               />
               <span className={placeStyle.place__area_separator}>{">"}</span>
-              <span>
-                {place.areas.name}
-              </span>
+              <span>{place.areas.name}</span>
               <span className={placeStyle.place__area_separator}>{">"}</span>
               {place.name}
             </div>
@@ -142,9 +140,9 @@ function PlacePage() {
           <div>
             <div className={placeStyle.place__desc}>{place.description}</div>
             <div className={placeStyle.place__photos}>
-              <SimpleImageSlider
+              {/* <SimpleImageSlider
                 className="slider-custom-stiles"
-                width={window.innerWidth > 768 ? "70vw" : "92vw"}
+                width={window.innerWidth > 768 ? "70vw" : "100vw"}
                 height={640}
                 navSize={30}
                 navStyle={2}
@@ -152,7 +150,28 @@ function PlacePage() {
                 showBullets={true}
                 bgColor={"transparent"}
                 showNavs={true}
-              />
+              /> */}
+              {/* <Swiper
+                // Установите ширину и высоту в соответствии с вашими требованиями
+                style={{
+                  width: window.innerWidth > 768 ? "70vw" : "100vw",
+                  height: "640px",
+                }}
+                navigation={true} // включить навигационные кнопки
+                pagination={{ clickable: true }} // включить и сделать кликабельной пагинацию
+                modules={[Navigation, Pagination]} // добавить модули
+              >
+                {images.map((image, index) => (
+                  <SwiperSlide key={index}>
+                    <img
+                      src={image.url}
+                      alt={`Slide ${index}`}
+                      style={{ width: "100%", height: "100%" }}
+                    />
+                  </SwiperSlide>
+                ))}
+              </Swiper> */}
+              <PlacePageSlider images={images} />
             </div>
           </div>
           {!!nearPlaces.length && (

@@ -8,11 +8,21 @@
     color: white  
   &__desc
     color: white
-    font-size: 1.5rem 
+    font-size: 1.5rem
+    &_mob
+      display: none
   img
     position: absolute 
     width: 200px
     opacity: 0.3
+
+@media (max-width: 1680px)
+  .places
+    &__desc
+      &_mob
+        display: inline
+      &_desctop
+        display: none
 
 @media (max-width: 1024px)
   .places
