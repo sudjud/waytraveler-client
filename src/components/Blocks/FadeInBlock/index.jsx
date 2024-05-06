@@ -11,11 +11,11 @@ function FadeIn() {
         }} className={block.black}></div>
       <div className={block.fadeIn__title}>
         Сайт, посвященный красоте и&nbsp;величественности вайнахского края
+        <img src={mountains} className={block.fadeIn__image} alt="" />
       </div>
       <div className={block.fadeIn__sub}>
 
       </div>
-      <img src={mountains} className={block.fadeIn__image} alt="" />
     </div>
   )
 };

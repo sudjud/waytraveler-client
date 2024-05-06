@@ -17,11 +17,9 @@ const Comment = () => {
   useEffect(() => {
     dispatch(fetchComment());
   }, [dispatch]);
-<<<<<<< Updated upstream
+
   const comment = useSelector((state) => state.comment.comment);
   const loading = useSelector((state) => state.comment.loading);
-=======
->>>>>>> Stashed changes
 
   //   console.log(comment);
 
